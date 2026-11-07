@@ -120,3 +120,13 @@ h1{font-size:clamp(2.3rem,6vw,4.2rem);letter-spacing:-.02em}
 .map{width:100%;height:360px;border:0;border-radius:16px;margin-top:28px}
 .frm select{max-width:100%}
 @media (max-width:860px){.cgrid{grid-template-columns:1fr}}
+.tbl{overflow-x:auto}.tbl table{min-width:760px}.tbl td,.tbl th{vertical-align:top}
+
+footer{text-align:left;padding:50px 0 24px;color:var(--muted)}
+.fgrid{display:grid;grid-template-columns:1.6fr 1fr 1.2fr 1.6fr;gap:30px}
+footer h4{margin:0 0 12px;color:var(--text);font-size:.95rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}footer p{margin:0 0 8px}
+footer a:hover{color:var(--text)}
+.fbottom{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:.82rem}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
+.legal h2{font-size:1.2rem;margin:28px 0 8px}.legal p,.legal li{color:var(--muted)}

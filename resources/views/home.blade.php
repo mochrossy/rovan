@@ -92,7 +92,7 @@
 
 <section id="contact"><div class="wrap"><div class="cta">
 <h2>Siap naik ke level berikutnya?</h2><p>Ceritakan kebutuhan bisnis Anda, kami bantu rancang langkah pertamanya.</p>
-<a class="btn" href="mailto:hello@rovansystem.example">Hubungi Rovan System & Solution</a>
+<a class="btn" href="{{ route('contact') }}">Hubungi Rovan</a>
 </div></div></section>
 
 <dialog id="demo"><div class="dh"><h3>Demo Aplikasi Absensi</h3><button class="x" id="demoX" type="button" aria-label="Tutup">×</button></div>

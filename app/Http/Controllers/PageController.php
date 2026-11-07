@@ -51,7 +51,7 @@ class PageController extends Controller
     public function sitemap()
     {
         $urls = [[url('/'), now()], [route('news'), now()], [route('portfolio'), now()],
-            [route('about'), now()], [route('services'), now()], [route('faq'), now()], [route('contact'), now()]];
+            [route('about'), now()], [route('services'), now()], [route('faq'), now()], [route('contact'), now()], [route('privacy'), now()]];
         foreach (\App\Support\ServiceCatalog::all() as $sv) $urls[] = [route('service', $sv['slug']), now()];
         foreach (Post::live()->get() as $p) $urls[] = [route('post', $p->slug), $p->updated_at];
         $xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';

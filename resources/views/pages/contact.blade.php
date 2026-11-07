@@ -41,13 +41,13 @@
 <select name="service">
 <option value="">Pilih layanan (opsional)</option>
 @foreach($services as $s)
-<option value="{{ $s }}" @selected(old('service') === $s)>{{ $s }}</option>
+<option value="{{ $s }}" @selected(old('service', request('service')) === $s)>{{ $s }}</option>
 @endforeach
-<option value="Lainnya" @selected(old('service') === 'Lainnya')>Lainnya</option>
+<option value="Lainnya" @selected(old('service', request('service')) === 'Lainnya')>Lainnya</option>
 </select></label>
 <label>Pesan *<textarea name="message" rows="5">{{ old('message') }}</textarea>@error('message')<small class="err">{{ $message }}</small>@enderror</label>
 <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-<label class="chk"><input type="checkbox" name="consent" value="1" @checked(old('consent'))> Saya setuju data saya digunakan untuk menanggapi pesan ini.</label>
+<label class="chk"><input type="checkbox" name="consent" value="1" @checked(old('consent'))> Saya setuju data saya digunakan untuk menanggapi pesan ini, sesuai <a href="{{ route('privacy') }}" target="_blank">Kebijakan Privasi</a>.</label>
 @error('consent')<small class="err">Mohon centang persetujuan.</small>@enderror
 <button class="btn">Kirim Pesan</button>
 </form>

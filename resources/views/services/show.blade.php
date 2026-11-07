@@ -7,14 +7,14 @@
 <h1 style="font-size:2.2rem">{{ $s['icon'] }} {{ $s['title'] }}</h1>
 <p class="sub">{{ $s['intro'] }}</p>
 <div class="grid">
-@foreach($s['items'] as [$name, $desc])
-<div class="card"><h3>{{ $name }}</h3><p>{{ $desc }}</p></div>
+@foreach($s['items'] as $it)
+<a class="card" href="{{ route('service.item', [$s['slug'], $it['slug']]) }}"><h3>{{ $it['title'] }}</h3><p>{{ $it['desc'] }}</p><p class="meta" style="margin-top:10px">Detail →</p></a>
 @endforeach
 </div></div></section>
 <section><div class="wrap"><div class="cta">
 <h2>Tertarik dengan {{ $s['title'] }}?</h2>
 <p>Ceritakan kebutuhan Anda, kami mulai dari define your baseline.</p>
-<a class="btn" href="https://wa.me/6281234567890?text={{ rawurlencode('Halo, saya ingin konsultasi tentang ' . $s['title']) }}" target="_blank" rel="noopener">Konsultasi via WhatsApp</a>
+<a class="btn" href="{{ route('contact', ['service' => $s['title']]) }}">Hubungi Rovan</a>
 </div></div></section>
 <section><div class="wrap">
 <h2>Other Services</h2>

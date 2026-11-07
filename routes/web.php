@@ -20,6 +20,7 @@ Route::get('/services/{slug}', [ServicePageController::class, 'service'])->name(
 Route::redirect('/layanan/{slug}', '/services/{slug}', 301);
 Route::get('/faq', [ServicePageController::class, 'faq'])->name('faq');
 Route::get('/kontak', [ServicePageController::class, 'contact'])->name('contact');
+Route::get('/privacy-policy', [ServicePageController::class, 'privacy'])->name('privacy');
 Route::post('/kontak', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');
 
 Route::middleware('auth')->prefix('admin')->group(function () {
