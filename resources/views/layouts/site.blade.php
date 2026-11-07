@@ -9,7 +9,7 @@ $d = trim($__env->yieldContent('description')) ?: 'Rovan System & Solution: IT s
 $orgLd = json_encode([
     '@context' => 'https://schema.org',
     '@type' => 'Organization',
-    'name' => 'Rovan System & Solution',
+    'name' => 'Rovan Solution',
     'alternateName' => 'Rovan System',
     'legalName' => 'PT Rovan Alfa Sejati',
     'slogan' => 'your partner to enhanced to the next level',
@@ -20,7 +20,7 @@ $orgLd = json_encode([
 <meta name="description" content="{{ $d }}">
 <link rel="canonical" href="{{ url()->current() }}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Rovan System & Solution">
+<meta property="og:site_name" content="Rovan Solution">
 <meta property="og:title" content="{{ $t }}">
 <meta property="og:description" content="{{ $d }}">
 <meta property="og:url" content="{{ url()->current() }}">
@@ -33,7 +33,7 @@ $orgLd = json_encode([
 </head>
 <body>
 <header><div class="wrap"><nav>
-<a class="logo" href="{{ url('/') }}"><i></i>Rovan <span>System & Solution</span></a>
+<a class="logo" href="{{ url('/') }}" aria-label="Rovan Solution">@if(file_exists(public_path('images/logo.png')))<img src="{{ asset('images/logo.png') }}" alt="Rovan logo">@else<i></i>@endif<span class="wm"><b>ROVAN</b><small>SYSTEM &amp; SOLUTION</small></span></a>
 <ul>
 <li><a href="{{ route('about') }}">About</a></li>
 <li><a href="{{ route('services') }}">Services</a></li>
@@ -48,7 +48,7 @@ $orgLd = json_encode([
 <main>@yield('content')</main>
 {{-- Ganti nomor WhatsApp; nanti bisa diganti widget Chatwoot --}}
 <a class="wa" href="https://wa.me/6281234567890?text=Halo%20Rovan%20System" target="_blank" rel="noopener">💬 Chat WhatsApp</a>
-<footer><div class="wrap">© {{ date('Y') }} PT Rovan Alfa Sejati · Rovan System & Solution</div></footer>
+<footer><div class="wrap">© {{ date('Y') }} PT Rovan Alfa Sejati · Rovan Solution</div></footer>
 <script>document.getElementById("thm").onclick=function(){var r=document.documentElement,n=r.getAttribute("data-theme")==="light"?"dark":"light";r.setAttribute("data-theme",n);try{localStorage.setItem("rv-theme",n)}catch(e){}}</script>
 @stack('scripts')
 </body>

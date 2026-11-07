@@ -104,3 +104,19 @@ h1{font-size:clamp(2.3rem,6vw,4.2rem);letter-spacing:-.02em}
 .playov{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;border:0;cursor:pointer;color:#fff;font-size:1.6rem;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 10px 40px rgba(0,0,0,.45)}
 .note{text-align:center;color:var(--muted);font-size:.78rem;margin:12px 0 0}
 @media (max-width:760px){.wbody{grid-template-columns:1fr}.side{display:none}.panels{grid-template-columns:1fr}.navr .btn{display:none}}
+
+.logo{display:flex;align-items:center}.logo img{height:32px;width:auto;margin-right:10px}.logo i{margin-right:10px;vertical-align:baseline}.logo .wm{color:var(--text);letter-spacing:.06em;font-weight:800}
+
+.logo .wm{display:flex;flex-direction:column;line-height:1.05;letter-spacing:normal}
+.logo .wm b{font-size:1.45rem;font-weight:800;letter-spacing:.02em;background:linear-gradient(135deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo .wm small{font-size:.62rem;font-weight:500;letter-spacing:.28em;color:var(--muted);margin-top:3px;white-space:nowrap}
+.logo img{height:44px;border-radius:8px}.logo i{width:40px;height:40px;border-radius:10px}
+@media (max-width:760px){.logo .wm small{letter-spacing:.14em}}
+
+.frm select{padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--text);font:inherit}
+
+.cgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:start}.cinfo{display:grid;gap:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.map{width:100%;height:360px;border:0;border-radius:16px;margin-top:28px}
+.frm select{max-width:100%}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr}}

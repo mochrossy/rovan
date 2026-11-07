@@ -13,6 +13,7 @@ class ContentController extends Controller
     // field => [tipe input, wajib?]
     private function cfg(string $type): array
     {
+        abort_unless(in_array($type, \App\Support\Roles::types(\App\Support\Roles::current())), 403);
         return match ($type) {
             'posts' => ['model' => Post::class, 'label' => 'News / Blog', 'fields' => [
                 'title' => ['text', true], 'excerpt' => ['textarea', false], 'body' => ['textarea', true],
