@@ -1,12 +1,12 @@
 @extends('layouts.site')
-@section('title','Rovan System & Solution – Your Partner to Enhanced to the Next Level')
+@section('title','Rovan System & Solution – Your Partner for Enhanced to the Next Level')
 @push('head')<script type="application/ld+json">{!! $faqLd !!}</script>@endpush
 @push('scripts')<script src="{{ asset('js/site.js') }}"></script>@endpush
 @section('content')
 
 <div class="hero-bg"><div class="wrap hero">
 <span class="tag"><i class="dot"></i> IT System Integrator &amp; Software House</span>
-<h1>Your partner to <em>enhanced to the next level</em></h1>
+<h1>Your Partner for <em>Enhanced to The Next Level</em></h1>
 <p>Rovan System & Solution membantu menaikkan dan memudahkan bisnis Anda lewat website, aplikasi, dan layanan IT yang tepat guna.</p>
 <div class="cta-row"><a class="btn lg" href="{{ route('contact') }}">Get Started →</a> <button class="btn o lg" id="demoBtn" type="button">▶ Watch Demo</button></div>
 <div class="trust"><small>TEKNOLOGI YANG KAMI GUNAKAN</small><div><span>Laravel</span><span>MariaDB</span><span>Docker</span><span>Nginx</span><span>Linux</span><span>Android</span></div></div>
@@ -71,7 +71,7 @@
 <h2>Portfolio</h2><p class="sub">Proyek dan klien yang telah bekerja sama dengan kami.</p>
 <div class="grid">
 @forelse($portfolios as $p)
-<div class="card">@if($p->image)<img src="{{ asset('storage/'.$p->image) }}" alt="{{ $p->title }}" loading="lazy" class="thumb">@endif<div class="meta">{{ $p->category }}{{ $p->tech ? ' · '.$p->tech : '' }}</div><h3>{{ $p->title }}</h3><p>{{ $p->description }}</p></div>
+@include('partials.work-card', ['p' => $p])
 @empty<p class="sub">Belum ada portfolio.</p>@endforelse
 </div>
 <p style="margin-top:20px"><a href="{{ route('portfolio') }}"><b>Lihat semua →</b></a></p></div></section>

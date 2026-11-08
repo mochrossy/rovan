@@ -45,6 +45,19 @@
 @endforeach
 </div></div></section>
 
+@if($works->count())
+<section><div class="wrap" style="max-width:920px">
+<h2>Contoh Pekerjaan</h2>
+<p class="sub">Contoh nyata dan mockup yang terkait dengan {{ $it['title'] }}.</p>
+<div class="grid">
+@foreach($works as $p)
+@include('partials.work-card', ['p' => $p])
+@endforeach
+</div>
+<p style="margin-top:18px"><a href="{{ route('portfolio', ['category' => $s['slug']]) }}"><b>Lihat semua portfolio →</b></a></p>
+</div></section>
+@endif
+
 <section><div class="wrap"><div class="cta">
 <h2>Tertarik dengan {{ $it['title'] }}?</h2>
 <p>Ceritakan kondisi Anda saat ini, kami mulai dari define your baseline.</p>
