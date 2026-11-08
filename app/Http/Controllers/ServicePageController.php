@@ -41,7 +41,8 @@ class ServicePageController extends Controller
             'serviceType' => $s['title'], 'areaServed' => 'ID',
             'provider' => ['@type' => 'Organization', 'name' => 'Rovan System & Solution', 'url' => url('/')],
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-        return view('services.item', compact('s', 'it', 'others', 'ld'));
+        $works = \App\Models\Portfolio::live()->where('service_slug', $item)->take(3)->get();
+        return view('services.item', compact('s', 'it', 'others', 'ld', 'works'));
     }
 
     public function service(string $slug)

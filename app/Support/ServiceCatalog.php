@@ -126,6 +126,25 @@ class ServiceCatalog
         ];
     }
 
+    /** Cari sub-layanan berdasarkan slug. */
+    public static function lookup(string $itemSlug): ?array
+    {
+        foreach (self::all() as $cat) {
+            foreach ($cat['items'] as $it) {
+                if ($it['slug'] === $itemSlug) return ['category' => $cat, 'item' => $it];
+            }
+        }
+        return null;
+    }
+
+    /** Pilihan untuk dropdown: slug => "Kategori › Layanan". */
+    public static function options(): array
+    {
+        $o = [];
+        foreach (self::all() as $cat) foreach ($cat['items'] as $it) $o[$it['slug']] = $cat['title'] . ' › ' . $it['title'];
+        return $o;
+    }
+
     public static function faq(): array
     {
         return [

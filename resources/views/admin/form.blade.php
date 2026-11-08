@@ -6,9 +6,16 @@
 @csrf
 @if($item->exists) @method('PUT') @endif
 @foreach($c['fields'] as $name => [$kind, $req])
-<label>{{ str($name)->replace('_', ' ')->title() }}@if($req) *@endif
+<label>{{ $c['labels'][$name] ?? str($name)->replace('_', ' ')->title() }}@if($req) *@endif
 @if($kind === 'textarea')
 <textarea name="{{ $name }}" rows="{{ $name === 'body' ? 12 : 3 }}">{{ old($name, $item->$name) }}</textarea>
+@elseif($kind === 'select')
+<select name="{{ $name }}">
+<option value="">—</option>
+@foreach($c['options'][$name] as $val => $label)
+<option value="{{ $val }}" @selected(old($name, $item->$name) === (string) $val)>{{ $label }}</option>
+@endforeach
+</select>
 @elseif($kind === 'file')
 <input type="file" name="{{ $name }}" accept="image/*">
 @if($item->$name)<small>Saat ini: {{ $item->$name }}</small>@endif

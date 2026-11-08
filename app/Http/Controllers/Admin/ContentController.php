@@ -20,11 +20,20 @@ class ContentController extends Controller
                 'cover' => ['file', false], 'meta_title' => ['text', false],
                 'meta_description' => ['text', false], 'published_at' => ['datetime-local', false],
             ]],
-            'portfolios' => ['model' => Portfolio::class, 'label' => 'Portfolio', 'fields' => [
-                'client' => ['text', true], 'title' => ['text', true], 'category' => ['text', true],
-                'description' => ['textarea', true], 'tech' => ['text', false], 'image' => ['file', false],
-                'url' => ['text', false], 'sort_order' => ['number', false],
-            ]],
+            'portfolios' => ['model' => Portfolio::class, 'label' => 'Portfolio',
+                'options' => ['type' => Portfolio::TYPES, 'service_slug' => \App\Support\ServiceCatalog::options()],
+                'labels' => [
+                    'title' => 'Judul proyek', 'type' => 'Jenis', 'service_slug' => 'Terkait layanan', 'client' => 'Nama klien (kosongkan jika anonim)',
+                    'year' => 'Tahun', 'description' => 'Ringkasan', 'challenge' => 'Kondisi awal (baseline)', 'solution' => 'Solusi',
+                    'result' => 'Hasil (bandingkan dengan baseline)', 'tech' => 'Teknologi', 'image' => 'Gambar mockup',
+                    'url' => 'Tautan proyek (opsional)', 'sort_order' => 'Urutan tampil',
+                ],
+                'fields' => [
+                    'title' => ['text', true], 'type' => ['select', true], 'service_slug' => ['select', false],
+                    'client' => ['text', false], 'year' => ['number', false], 'description' => ['textarea', true],
+                    'challenge' => ['textarea', false], 'solution' => ['textarea', false], 'result' => ['textarea', false],
+                    'tech' => ['text', false], 'image' => ['file', false], 'url' => ['text', false], 'sort_order' => ['number', false],
+                ]],
             default => abort(404),
         };
     }
@@ -69,7 +78,8 @@ class ContentController extends Controller
         $rules = [];
         foreach ($c['fields'] as $f => [$kind, $req]) {
             $rules[$f] = ($req ? 'required' : 'nullable') . match ($kind) {
-                'file' => '|image|max:2048', 'datetime-local' => '|date', 'number' => '|integer', default => '|string',
+                'file' => '|image|max:2048', 'datetime-local' => '|date', 'number' => '|integer', 'select' => '|string|in:' . implode(',', array_keys($c['options'][$f] ?? [])),
+                default => '|string',
             };
         }
         $data = $r->validate($rules);
@@ -87,6 +97,13 @@ class ContentController extends Controller
         if ($type === 'portfolios') {
             $data['is_published'] = $r->boolean('is_published');
             $data['sort_order'] = $data['sort_order'] ?? 0;
+            $data['client'] = $data['client'] ?? '';
+            $data['category'] = \App\Support\ServiceCatalog::lookup($data['service_slug'] ?? '')['category']['title'] ?? 'Umum';
+            if (!$item->slug) {
+                $slug = Str::slug($data['title']);
+                if (Portfolio::where('slug', $slug)->exists()) $slug .= '-' . now()->timestamp;
+                $data['slug'] = $slug;
+            }
         }
         $item->fill($data)->save();
         return redirect()->route('admin.index', $type)->with('ok', 'Tersimpan');

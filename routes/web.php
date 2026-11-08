@@ -11,6 +11,7 @@ Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [PageController::class, 'post'])->name('post');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/portfolio/{key}', [PageController::class, 'work'])->name('work');
 Route::get('/sitemap.xml', [PageController::class, 'sitemap']);
 
 Route::get('/tentang', [ServicePageController::class, 'about'])->name('about');

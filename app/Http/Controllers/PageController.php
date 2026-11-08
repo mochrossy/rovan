@@ -45,7 +45,24 @@ class PageController extends Controller
 
     public function portfolio()
     {
-        return view('portfolio.index', ['items' => Portfolio::live()->get()]);
+        $cats = \App\Support\ServiceCatalog::all();
+        $cat = request('category');
+        $items = Portfolio::live()->get();
+        if ($cat && isset($cats[$cat])) {
+            $slugs = array_column($cats[$cat]['items'], 'slug');
+            $items = $items->filter(fn ($p) => in_array($p->service_slug, $slugs))->values();
+        } else {
+            $cat = null;
+        }
+        return view('portfolio.index', compact('items', 'cats', 'cat'));
+    }
+
+    public function work(string $key)
+    {
+        $p = Portfolio::live()
+            ->where(fn ($q) => $q->where('slug', $key)->orWhere('id', is_numeric($key) ? $key : 0))
+            ->firstOrFail();
+        return view('portfolio.show', compact('p'));
     }
 
     public function sitemap()
@@ -57,6 +74,7 @@ class PageController extends Controller
             foreach ($sv['items'] as $it) $urls[] = [route('service.item', [$sv['slug'], $it['slug']]), now()];
         }
         foreach (Post::live()->get() as $p) $urls[] = [route('post', $p->slug), $p->updated_at];
+        foreach (Portfolio::live()->get() as $w) $urls[] = [route('work', $w->slug ?: $w->id), $w->updated_at];
         $xml = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
         foreach ($urls as [$loc, $at]) $xml .= '<url><loc>' . e($loc) . '</loc><lastmod>' . $at->toDateString() . '</lastmod></url>';
         return response($xml . '</urlset>', 200, ['Content-Type' => 'application/xml']);
