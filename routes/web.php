@@ -17,6 +17,7 @@ Route::get('/tentang', [ServicePageController::class, 'about'])->name('about');
 Route::get('/services', [ServicePageController::class, 'services'])->name('services');
 Route::redirect('/layanan', '/services', 301);
 Route::get('/services/{slug}', [ServicePageController::class, 'service'])->name('service');
+Route::get('/services/{category}/{item}', [ServicePageController::class, 'serviceItem'])->name('service.item');
 Route::redirect('/layanan/{slug}', '/services/{slug}', 301);
 Route::get('/faq', [ServicePageController::class, 'faq'])->name('faq');
 Route::get('/kontak', [ServicePageController::class, 'contact'])->name('contact');

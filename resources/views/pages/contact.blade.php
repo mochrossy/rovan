@@ -4,7 +4,7 @@
 @php
     $c = config('rovan');
     $mapQ = urlencode($c['map_query'] ?: $c['address']);
-    $services = array_map(fn ($s) => $s['title'], \App\Support\ServiceCatalog::all());
+    $groups = array_map(fn ($s) => ['title' => $s['title'], 'items' => array_column($s['items'], 'title')], \App\Support\ServiceCatalog::all());
     $ld = json_encode([
         '@context' => 'https://schema.org',
         '@type' => 'LocalBusiness',
@@ -40,8 +40,13 @@
 <label>Layanan yang diminati
 <select name="service">
 <option value="">Pilih layanan (opsional)</option>
-@foreach($services as $s)
-<option value="{{ $s }}" @selected(old('service', request('service')) === $s)>{{ $s }}</option>
+@foreach($groups as $g)
+<optgroup label="{{ $g['title'] }}">
+<option value="{{ $g['title'] }}" @selected(old('service', request('service')) === $g['title'])>{{ $g['title'] }} (umum)</option>
+@foreach($g['items'] as $t)
+<option value="{{ $t }}" @selected(old('service', request('service')) === $t)>{{ $t }}</option>
+@endforeach
+</optgroup>
 @endforeach
 <option value="Lainnya" @selected(old('service', request('service')) === 'Lainnya')>Lainnya</option>
 </select></label>

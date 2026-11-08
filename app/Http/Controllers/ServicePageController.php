@@ -27,6 +27,23 @@ class ServicePageController extends Controller
         return view('services.index', ['services' => ServiceCatalog::all()]);
     }
 
+    public function serviceItem(string $category, string $item)
+    {
+        $all = ServiceCatalog::all();
+        abort_unless(isset($all[$category]), 404);
+        $s = $all[$category];
+        $it = collect($s['items'])->firstWhere('slug', $item);
+        abort_unless($it, 404);
+        $others = array_values(array_filter($s['items'], fn ($x) => $x['slug'] !== $item));
+        $ld = json_encode([
+            '@context' => 'https://schema.org', '@type' => 'Service',
+            'name' => $it['title'], 'description' => $it['desc'],
+            'serviceType' => $s['title'], 'areaServed' => 'ID',
+            'provider' => ['@type' => 'Organization', 'name' => 'Rovan System & Solution', 'url' => url('/')],
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        return view('services.item', compact('s', 'it', 'others', 'ld'));
+    }
+
     public function service(string $slug)
     {
         $all = ServiceCatalog::all();

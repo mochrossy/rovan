@@ -130,3 +130,5 @@ footer a:hover{color:var(--text)}
 .fbottom{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);text-align:center;font-size:.82rem}
 @media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}@media (max-width:520px){.fgrid{grid-template-columns:1fr}}
 .legal h2{font-size:1.2rem;margin:28px 0 8px}.legal p,.legal li{color:var(--muted)}
+
+.list{margin:10px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:7px;font-size:.94rem}
