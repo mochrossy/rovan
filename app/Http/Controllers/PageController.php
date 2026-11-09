@@ -21,6 +21,7 @@ class PageController extends Controller
             'faq' => $faq, 'faqLd' => $faqLd,
             'portfolios' => Portfolio::live()->take(4)->get(),
             'posts' => Post::live()->latest('published_at')->take(3)->get(),
+            'slides' => \App\Models\Slide::orderBy('sort_order')->latest()->get(),
         ]);
     }
 

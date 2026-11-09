@@ -34,7 +34,7 @@
 <div><h1 style="font-size:2.2rem">Tentang Kami</h1>
 <p class="sub">Rovan System & Solution adalah brand dari PT Rovan Alfa Sejati, IT system integrator dan software house.</p>
 <p style="color:var(--muted)">Kami hadir sebagai partner yang menjadi alat bantu untuk menaikkan dan memudahkan bisnis Anda, mulai dari website, aplikasi absensi dan HRIS, hingga pengelolaan server dan endpoint. Pendekatan kami bertahap, terukur, dan selalu terbuka pada masukan.</p></div>
-<div class="card"><h3>Your partner to enhanced to the next level</h3><p>Menjadi partner teknologi yang membantu bisnis tumbuh lewat solusi tepat guna, dirawat berkelanjutan, dan disempurnakan bersama klien.</p></div>
+<div class="card"><h3>Your partner to enhance your business to the next level</h3><p>Menjadi partner teknologi yang membantu bisnis tumbuh lewat solusi tepat guna, dirawat berkelanjutan, dan disempurnakan bersama klien.</p></div>
 </div></section>
 
 <section><div class="wrap">

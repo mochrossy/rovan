@@ -19,6 +19,9 @@
 @if(in_array('portfolios', $types))
 <li><a href="{{ route('admin.index', 'portfolios') }}">Portfolio</a></li>
 @endif
+@if(in_array('slides', $types))
+<li><a href="{{ route('admin.index', 'slides') }}">Slides</a></li>
+@endif
 @if($isAdmin)
 <li><a href="{{ route('admin.messages') }}">Messages{{ $unread ? ' (' . $unread . ')' : '' }}</a></li>
 <li><a href="{{ route('admin.users') }}">Users</a></li>

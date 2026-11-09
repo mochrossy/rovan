@@ -1,12 +1,12 @@
 @extends('layouts.site')
-@section('title','Rovan System & Solution – Your Partner for Enhanced to the Next Level')
+@section('title','Rovan System & Solution – Your Partner to Enhance Your Business to the Next Level')
 @push('head')<script type="application/ld+json">{!! $faqLd !!}</script>@endpush
 @push('scripts')<script src="{{ asset('js/site.js') }}"></script>@endpush
 @section('content')
 
 <div class="hero-bg"><div class="wrap hero">
 <span class="tag"><i class="dot"></i> IT System Integrator &amp; Software House</span>
-<h1>Your Partner for <em>Enhanced to The Next Level</em></h1>
+<h1>Your Partner to Enhance <em>Your Business to The Next Level</em></h1>
 <p>Rovan System & Solution membantu menaikkan dan memudahkan bisnis Anda lewat website, aplikasi, dan layanan IT yang tepat guna.</p>
 <div class="cta-row"><a class="btn lg" href="{{ route('contact') }}">Get Started →</a> <button class="btn o lg" id="demoBtn" type="button">▶ Watch Demo</button></div>
 <div class="trust"><small>TEKNOLOGI YANG KAMI GUNAKAN</small><div><span>Laravel</span><span>MariaDB</span><span>Docker</span><span>Nginx</span><span>Linux</span><span>Android</span></div></div>
@@ -34,16 +34,24 @@
 <p class="note">Mockup dengan data contoh. Aplikasi sebenarnya dapat disesuaikan dengan kebutuhan Anda.</p>
 <h2 style="margin-top:50px;text-align:center">Tampilan Aplikasi</h2><p class="sub" style="text-align:center">Beberapa layar yang bisa disesuaikan untuk bisnis Anda.</p>
 <div class="slider" id="sl">
-<div class="slide"><div class="screen"><i></i><i></i><i></i><i></i></div><b>Dashboard Absensi</b><small>Ringkasan kehadiran real-time</small></div>
-<div class="slide"><div class="screen"><i></i><i></i><i></i><i></i></div><b>Check-in / Check-out</b><small>Absen dari ponsel karyawan</small></div>
-<div class="slide"><div class="screen"><i></i><i></i><i></i><i></i></div><b>Manajemen Cuti</b><small>Pengajuan dan persetujuan</small></div>
-<div class="slide"><div class="screen"><i></i><i></i><i></i><i></i></div><b>Laporan Payroll</b><small>Rekap jam kerja otomatis</small></div>
+@forelse($slides as $sl)
+<div class="slide">
+@if($sl->image)
+<img src="{{ asset('storage/' . $sl->image) }}" alt="{{ $sl->title }}" loading="lazy" class="shot">
+@else
+<div class="screen"><i></i><i></i><i></i><i></i></div>
+@endif
+<b>{{ $sl->title }}</b><small>{{ $sl->caption }}</small>
+</div>
+@empty
+(biarkan 4 slide contoh lama di sini)
+@endforelse
 </div>
 <div class="sl-nav"><button id="sp" type="button" aria-label="Sebelumnya">‹</button><button id="sn" type="button" aria-label="Berikutnya">›</button></div>
 </div></section>
 
 <section id="about"><div class="wrap about">
-<div><h2>About Us</h2><p class="sub">Rovan System & Solution adalah brand dari PT Rovan Alfa Sejati, IT system integrator dan software house.</p>
+<div><h2>About Us</h2><p class="sub">Rovan System & Solution IT system integrator dan software house yang telah berpengalaman lebih dari 19+ tahun.</p>
 <p style="color:var(--muted)">Kami hadir sebagai partner yang menjadi alat bantu untuk menaikkan dan memudahkan bisnis Anda, mulai dari website, aplikasi absensi dan HRIS, hingga pengelolaan server dan endpoint. Pendekatan kami bertahap, terukur, dan selalu terbuka pada masukan.</p></div>
 <div class="card"><h3>Misi Kami</h3><p>Menjadi partner teknologi yang membantu bisnis tumbuh lewat solusi tepat guna, dirawat berkelanjutan, dan disempurnakan bersama klien.</p></div>
 </div></section>

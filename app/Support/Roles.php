@@ -18,9 +18,9 @@ class Roles
     public static function types(?string $role): array
     {
         return match ($role) {
-            'admin' => ['posts', 'portfolios'],
+            'admin' => ['posts', 'portfolios', 'slides'],
             'editor' => ['posts'],
-            'portfolio' => ['portfolios'],
+            'portfolio' => ['portfolios', 'slides'],
             default => [],
         };
     }

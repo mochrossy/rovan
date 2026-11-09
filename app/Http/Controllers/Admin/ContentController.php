@@ -34,6 +34,12 @@ class ContentController extends Controller
                     'challenge' => ['textarea', false], 'solution' => ['textarea', false], 'result' => ['textarea', false],
                     'tech' => ['text', false], 'image' => ['file', false], 'url' => ['text', false], 'sort_order' => ['number', false],
                 ]],
+            'slides' => ['model' => \App\Models\Slide::class, 'label' => 'Tampilan Aplikasi (slider beranda)',
+                'labels' => ['title' => 'Judul layar', 'caption' => 'Keterangan singkat', 'image' => 'Gambar mockup', 'sort_order' => 'Urutan tampil'],
+                'fields' => [
+                    'title' => ['text', true], 'caption' => ['text', false],
+                    'image' => ['file', false], 'sort_order' => ['number', false],
+                ]],
             default => abort(404),
         };
     }
@@ -93,6 +99,9 @@ class ContentController extends Controller
             $slug = Str::slug($data['title']);
             if (Post::where('slug', $slug)->exists()) $slug .= '-' . now()->timestamp;
             $data['slug'] = $slug;
+        }
+        if ($type === 'slides') {
+            $data['sort_order'] = $data['sort_order'] ?? 0;
         }
         if ($type === 'portfolios') {
             $data['is_published'] = $r->boolean('is_published');

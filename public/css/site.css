@@ -134,3 +134,9 @@ footer a:hover{color:var(--text)}
 .list{margin:10px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:7px;font-size:.94rem}
 
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}.chip{padding:7px 16px;border:1px solid var(--line);border-radius:99px;font-size:.88rem;color:var(--muted)}.chip.on{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border-color:transparent}
+
+.logo img{border-radius:0;height:46px;width:auto}
+
+.shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line)}
+.slide{flex-basis:min(360px,82%)}
+.card .thumb{aspect-ratio:16/10;object-fit:cover;height:auto}
