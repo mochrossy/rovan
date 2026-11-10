@@ -10,7 +10,7 @@
 <h1 style="font-size:2.2rem">{{ $p->title }}</h1>
 <p class="meta">{{ \App\Models\Portfolio::TYPES[$p->type] ?? 'Proyek' }}@if($p->client) · {{ $p->client }}@endif @if($p->year) · {{ $p->year }}@endif</p>
 @if($p->image)
-<img src="{{ asset('storage/' . $p->image) }}" alt="{{ $p->title }}" class="thumb" style="margin:18px 0">
+<img src="{{ asset('storage/' . $p->image) }}" alt="{{ $p->title }}" class="thumb" style="margin:18px 0" data-zoom>
 @endif
 <p class="sub">{{ $p->description }}</p>
 @if($p->type === 'sample')

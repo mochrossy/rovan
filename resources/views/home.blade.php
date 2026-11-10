@@ -37,7 +37,7 @@
 @forelse($slides as $sl)
 <div class="slide">
 @if($sl->image)
-<img src="{{ asset('storage/' . $sl->image) }}" alt="{{ $sl->title }}" loading="lazy" class="shot">
+<img src="{{ asset('storage/' . $sl->image) }}" alt="{{ $sl->title }}" loading="lazy" class="shot" data-zoom data-group="app">
 @else
 <div class="screen"><i></i><i></i><i></i><i></i></div>
 @endif

@@ -81,6 +81,7 @@ $orgLd = json_encode([
 <div class="wrap fbottom">© {{ date('Y') }} PT Rovan Alfa Sejati · Rovan System & Solution · <a href="{{ route('privacy') }}">Kebijakan Privasi</a></div>
 </footer>
 <script>document.getElementById("thm").onclick=function(){var r=document.documentElement,n=r.getAttribute("data-theme")==="light"?"dark":"light";r.setAttribute("data-theme",n);try{localStorage.setItem("rv-theme",n)}catch(e){}}</script>
+<script src="{{ asset('js/lightbox.js') }}" defer></script>
 @stack('scripts')
 </body>
 </html>

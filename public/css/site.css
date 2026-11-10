@@ -140,3 +140,11 @@ footer a:hover{color:var(--text)}
 .shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line)}
 .slide{flex-basis:min(360px,82%)}
 .card .thumb{aspect-ratio:16/10;object-fit:cover;height:auto}
+
+img[data-zoom]{cursor:zoom-in}
+.lb{position:fixed;inset:0;background:rgba(5,8,20,.92);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:50;padding:20px}
+.lb.on{display:flex}
+.lb img{max-width:min(96vw,1400px);max-height:82vh;width:auto;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.6);cursor:default}
+.lb p{color:#cfd3ea;margin:12px 0 0;font-size:.9rem}
+.lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:1.6rem;line-height:1;cursor:pointer}
+.lb-x{top:16px;right:16px}.lb-p{left:16px;top:50%}.lb-n{right:16px;top:50%}.lb.single .lb-p,.lb.single .lb-n{display:none}
